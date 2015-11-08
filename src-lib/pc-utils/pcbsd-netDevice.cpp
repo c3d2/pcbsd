@@ -87,9 +87,9 @@ QString NetDevice::ipv6AsString(){
    int s = socket(PF_INET6, SOCK_DGRAM, 0);
    
    ioctl(s, SIOCGIFADDR, &ifr);
-   struct in_addr in = ((sockaddr_in6 *) &ifr.ifr_addr)->sin6_addr;
+   struct in6_addr in = ((sockaddr_in6 *) &ifr.ifr_addr)->sin6_addr;
 
-   return QString(inet_ntoa(in));
+   return QString(inet_ntop(AF_INET6, &in, NULL, INET6_ADDRSTRLEN));
 }
 
 //Fetch the netmask and return it as a QString
