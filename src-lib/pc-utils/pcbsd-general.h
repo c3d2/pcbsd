@@ -16,6 +16,7 @@
 namespace pcUtil{
 
 class General{
+public:
 	//Non-event-blocking versions of QProcess::execute() or system()
 	//Note: environment changes should be listed as such: [<variable>=<value>]
 	// - Both success/log of output
@@ -32,7 +33,7 @@ class General{
 	//Retrieve a text-based sysctl
 	QString sysctl(QString var);
 	//Retrieve a number-based sysctl
-	long long sysctlAsInt(QString var)
+	long long sysctlAsInt(QString var);
 };
 	
 } //end of pcbsd namespace
