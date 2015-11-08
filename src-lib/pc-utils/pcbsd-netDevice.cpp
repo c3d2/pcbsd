@@ -171,6 +171,7 @@ QString NetDevice::mediaStatusAsString(){
 }
 
 QString NetDevice::gatewayAsString(){
+	//get the hole output of netstat? error filter i for QStringlist
   QString info = General::RunCommand("nice netstat -n -r").filter(name).filter("default").join("\n");
   if(info.isEmpty()){ return ""; }
   //Pull the gateway out of the first line (<default> <gateway>)
@@ -194,7 +195,7 @@ bool NetDevice::isWireless(){
 //Get the parent device (if this is a wireless wlan)
 QString NetDevice::getWifiParent(){
    if(!name.contains("wlan")){ return ""; }
-   return Utils::sysctl("net.wlan." + this->devNum() + ".%parent");
+   return General::sysctl("net.wlan." +  QString::number(devNum()) + ".%parent");
 }
 
 //See if the device is setup to use DHCP
@@ -317,7 +318,7 @@ long NetDevice::errorsTx(){
 //=========================
 //   SETTING FUNCTIONS (requires root)
 //=========================
-void setUp(bool up){
+void NetDevice::setUp(bool up){
   //This only sets it up/down for the current session - does not change usage on next boot
-  General::runCommand("ifconfig "+name+" "+ (up ? "up": "down") );
+  General::RunCommand("ifconfig "+name+" "+ (up ? "up": "down") );
 }
