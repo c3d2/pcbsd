@@ -35,6 +35,9 @@ struct NetDevSettings{
 	//  For the current IP/IPv6 information use the "NetDevice" class below
 	QString staticIPv4, staticNetmask, staticIPv6; //assumes DHCP if none are set
 	QString staticGateway;
+	//Current
+	QString IPv4, IPv6, netmask;
+	QString gateway;
 };
 
 //General data class for network devices

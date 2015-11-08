@@ -92,22 +92,22 @@ NetDevSettings Network::deviceIfconfigSettings(QString dev){
 	if(info.isEmpty() || info.contains("interface "+dev+"does not exist")){ return set; } //empty stucture
 	//Now parse all the available info from ifconfig
 	info = info.replace("\t"," ").replace("\n"," ").simplified(); //ensure that whitespace is used for parsing
-	//if(info.contains("inet ")){ set.staticIPv4 = info.section("inet ",1,1).section(" ",0,0); }
-	//if(info.contains("inet6 ")){ set.staticIPv6 = info.section("inet6 ",1,1).section("%",0,0); }
 	set.device = dev;
 	//Wifi
 	if(info.contains(" ssid ")){ set.wifiSSID = info.section(" ssid ",1,1).section(" ",0,0); }
 	if(info.contains(" bssid ")){ set.wifiBSSID = info.section(" bssid ",1,1).section(" ",0,0); }
 	if(info.contains(" country ")){ set.wifiCountry = info.section(" country ",1,1).section(" ",0,0); }
 	if(info.contains(" channel ")){ set.wifiChannel = info.section(" channel ",1,1).section(" ",0,0); }
-	// bool wifiHost;
 	//General
 	if(info.contains(" ether ")){ set.etherMac = info.section(" ether ",1,1).section(" ",0,0); }
-	// Static
-	// if(! DHCP)
-	NetDevice devName(dev);
-	set.staticIPv4 = devName.ipAsString();
+	//NetDevice
+	NetDevice netDev(dev);
+	set.IPv4 = netDev.ipAsString();
+	set.IPv6 = netDev.ipv6AsString();
+	set.netmask = netDev.netmaskAsString();
+	set.gateway = netDev.gatewayAsString();
 
+	return set;
 }
 
 //=====================
