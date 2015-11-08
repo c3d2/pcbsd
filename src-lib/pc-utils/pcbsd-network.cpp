@@ -9,6 +9,8 @@
 
 #include <netdb.h> //from "man getnetent" (network entries)
 #include "pcbsd-general.h"
+#include <QDateTime>
+#include <QFileInfo>
 
 using namespace pcUtil;
 //=====================

@@ -10,6 +10,8 @@
 #include <QString>
 #include <QList>
 #include <QStringList>
+#include <sys/types.h>
+#include <sys/sysctl.h>
 
 namespace pcUtil{
 
