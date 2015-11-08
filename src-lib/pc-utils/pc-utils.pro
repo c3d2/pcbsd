@@ -15,7 +15,8 @@ HEADERS	+= pcbsd-general.h \
 		
 
 SOURCES	+= pcbsd-general.cpp \
-		pcbsd-network.cpp
+                pcbsd-network.cpp \
+    pcbsd-netDevice.cpp
 
 include.path=/usr/local/include/
 include.files=pcbsd-*.h

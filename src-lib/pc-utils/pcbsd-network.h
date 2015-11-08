@@ -27,7 +27,7 @@ struct NetDevSettings{
 	QString device; //the device these settings correspond with (usually unset if there was an error)
 	QString asDevice; //associated device (Example: wifi device -> wlan<num> device)
 	//Wifi
-	QString wifiCountry, wifiSSID, wifiBSSID, wifichannel;
+	QString wifiCountry, wifiSSID, wifiBSSID, wifiChannel;
 	bool wifihost;
 	//General
 	QString etherMac;
@@ -38,7 +38,7 @@ struct NetDevSettings{
 };
 
 //General data class for network devices
-// Note: Sources in NetDevice.cpp
+// Note: Sources in pcbsd-netDevice.cpp
 class NetDevice{
 private: 
 	QString name;
