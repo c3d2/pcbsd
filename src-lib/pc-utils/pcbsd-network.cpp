@@ -57,7 +57,7 @@ NetDevSettings Network::deviceRCSettings(QString dev){
     QString var = info[i].section("=",0,0).simplified();
     QString val = info[i].section("=",1,100).simplified();
       if(val.startsWith("\"")){ val = val.remove(1); }
-      if(val.endsWith("\"")){ val = val.chop(1); }
+      if(val.endsWith("\"")){ val.chop(1); }
       val.prepend(" "); //just to make additional parsing easier later - each "variable" should have whitespace on both sides
     if(var=="ifconfig_"+dev){
       QStringList vals = val.split(" ",QString::SkipEmptyParts);
